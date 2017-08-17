@@ -126,6 +126,19 @@ void test_reopen()
     WRAP();
 }
 
+void test_subject()
+{
+    SETUP();
+    std::string disc("this is a test task.");
+    std::string subject("test");
+
+    task new_task;
+    new_task.subject(subject);
+
+    assert( new_task.subject() == subject );
+
+    WRAP();
+}
 void test_main()
 {
     test_create_empty_task();
@@ -133,6 +146,7 @@ void test_main()
     test_set_empty_disc_task();
     test_get_disc_after_create_task();
     test_get_create_dt_after_create_task();
+    test_subject();
 
     test_finish();
     test_reopen();

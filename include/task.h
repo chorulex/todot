@@ -48,6 +48,16 @@ public:
         return dt_to_strimg(_dt_create);
     }
 
+    void subject(const std::string& sub)
+    {
+        _subject = sub;
+    }
+
+    std::string subject() const
+    {
+        return _subject;
+    }
+
     void discription(const std::string& disc) throw(std::logic_error)
     {
         if( disc.empty() )
@@ -72,6 +82,7 @@ private:
     }
 
 private:
+    std::string _subject;
     std::string _discription;
     time_t _dt_create;
     time_t _dt_finish = 0;
