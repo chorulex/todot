@@ -13,6 +13,32 @@ public:
     task()
     {
         time(&_dt_create);
+
+        _id = std::to_string(_dt_create);
+    }
+
+    task(const task& src)
+    {
+        this->_id = src._id;
+        this->_subject = src._subject;
+        this->_discription = src._discription;
+        this->_dt_create = src._dt_create;
+        this->_dt_finish = src._dt_finish;
+        this->_finish = src._finish;
+    }
+
+    task& operator= (const task& src)
+    {
+        if( this != &src ){
+            this->_id = src._id;
+            this->_subject = src._subject;
+            this->_discription = src._discription;
+            this->_dt_create = src._dt_create;
+            this->_dt_finish = src._dt_finish;
+            this->_finish = src._finish;
+        }
+
+        return *this;
     }
 
 public:
@@ -70,6 +96,11 @@ public:
         return _discription;
     }
 
+    std::string id() const
+    {
+        return _id;
+    }
+
 private:
     std::string dt_to_strimg(time_t time_val) const
     {
@@ -82,6 +113,7 @@ private:
     }
 
 private:
+    std::string _id;
     std::string _subject;
     std::string _discription;
     time_t _dt_create;
